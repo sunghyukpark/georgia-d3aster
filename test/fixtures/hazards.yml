@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  type: 
+  postal_code: MyString
+  injuries: 1
+  fatalities: 1
+  property_damage: 1
+  crop_damage: 1
+  hazard_id: 1
+  fips_code: 1
+  begin_date: 2016-03-14 19:19:22
+  end_date: 2016-03-14 19:19:22
+
+two:
+  name: MyString
+  type: 
+  postal_code: MyString
+  injuries: 1
+  fatalities: 1
+  property_damage: 1
+  crop_damage: 1
+  hazard_id: 1
+  fips_code: 1
+  begin_date: 2016-03-14 19:19:22
+  end_date: 2016-03-14 19:19:22
