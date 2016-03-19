@@ -15,10 +15,15 @@ class HazardsController < ApplicationController
   def create
     @hazard = Hazard.new(hazard_params)
 
-    if @hazard.save
-      redirect_to @hazard
+    if request.xhr?
+      # ajax response
+
     else
-      render 'new'
+      if @hazard.save
+        redirect_to @hazard
+      else
+        render 'new'
+      end
     end
   end
 

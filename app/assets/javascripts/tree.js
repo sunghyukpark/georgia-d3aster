@@ -1,8 +1,8 @@
 $(document).ready(function(){
-  initTree();
+  initTreeFromCsv();
 })
 
-function initTree(){
+function initTreeFromCsv(){
   // setup canvas
   var margin = { top: 20,
       right: 120,
@@ -37,7 +37,7 @@ function initTree(){
   // parse data
   d3.csv("/disasters.csv", function(d) {
     return {
-      id : +d.hazard_id,
+      hazard_id : +d.hazard_id,
       beginDate : new Date(d.HAZARD_BEGIN_DATE),
       endDate : new Date(d.HAZARD_END_DATE),
       year : new Date(d.HAZARD_BEGIN_DATE).getFullYear(),
@@ -53,7 +53,10 @@ function initTree(){
     };
   }, function(data) {
 
-    // generate nested data
+    jsonData = jsonStringifyData(data);
+    saveHazardData(jsonData);
+
+    // Generate nested data
     // 1st grouping by year
     // 2nd grouping by typeCombo
     var treeData = d3.nest()
@@ -61,7 +64,7 @@ function initTree(){
         .key(function(d){ return d.typeCombo; })
         .entries(data)
 
-    changeValuesToChildren(treeData)
+    changeValuesToChildren(treeData);
 
     // Add root
     root.children = treeData;
@@ -94,6 +97,32 @@ function initTree(){
         changeValuesToChildren(arr[i].children)
       }
     }
+  }
+
+  function jsonStringifyData(data){
+    var jsonData = {};
+    for(var i=0; i<data.length; i++){
+      jsonData[i] = data[i]
+    };
+    return JSON.stringify(jsonData);
+  }
+
+  // given a JSON data, store it as objects in Rails
+  function saveHazardData(data){
+    var request = $.ajax({
+      url: '/hazards',
+      method: 'POST',
+      data: data,
+      dataType: 'JSON'
+    });
+
+    request.done(function(msg){
+      console.log("ajax success")
+    })
+
+    request.fail(function(msg){
+      console.log("ajax fail")
+    })
   }
 
 

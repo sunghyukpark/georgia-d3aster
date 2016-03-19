@@ -1,0 +1,16 @@
+<div id="hazard-form">
+  <%= simple_form_for @hazard do |f| %>
+    <%= f.input :name %>
+    <%= f.input :type %>
+    <%= f.input :postal_code %>
+    <%= f.input :injuries %>
+    <%= f.input :fatalities %>
+    <%= f.input :property_damage %>
+    <%= f.input :crop_damage %>
+    <%= f.input :hazard_id %>
+    <%= f.input :fips_code %>
+    <%= f.input :begin_date %>
+    <%= f.input :end_date %>
+    <%= f.button :submit %>
+  <% end %>
+</div>
