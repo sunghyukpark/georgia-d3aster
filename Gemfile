@@ -12,6 +12,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'simple_form'
 gem 'd3-rails'
+gem 'roo', '~> 2.3.2'
+gem 'iconv'
 
 group :development, :test do
   gem 'byebug'

@@ -27,7 +27,7 @@ function initTreeFromCsv(){
 
 
   // d3 svg
-  var svg = d3.select("body").append("svg")
+  var svg = d3.select("#tree-map").append("svg")
       .attr("width", width + margin.right + margin.left)
       .attr("height", height + margin.top + margin.bottom)
       .append("g")
@@ -42,7 +42,8 @@ function initTreeFromCsv(){
       endDate : new Date(d.HAZARD_END_DATE),
       year : new Date(d.HAZARD_BEGIN_DATE).getFullYear(),
       typeCombo : d.HAZARD_TYPE_COMBO,
-      key  : d.NAME, // key is displayed as text in chart
+      name  : d.NAME,
+      key   : d.NAME, // KEY is displayed in text
       postalCode : d.POSTAL_CODE,
       fipsCode : +d.FIPS_CODE,
       injuries : +d.INJURIES,
@@ -52,10 +53,6 @@ function initTreeFromCsv(){
       remarks : d.REMARKS
     };
   }, function(data) {
-
-    jsonData = jsonStringifyData(data);
-    saveHazardData(jsonData);
-
     // Generate nested data
     // 1st grouping by year
     // 2nd grouping by typeCombo
@@ -71,8 +68,6 @@ function initTreeFromCsv(){
     root.key = "Disasters in Georgia 2010-2013";
     root.x0 = height / 2;
     root.y0 = 0;
-
-    console.log(root)
 
     function collapse(d) {
       if (d.children) {
@@ -97,32 +92,6 @@ function initTreeFromCsv(){
         changeValuesToChildren(arr[i].children)
       }
     }
-  }
-
-  function jsonStringifyData(data){
-    var jsonData = {};
-    for(var i=0; i<data.length; i++){
-      jsonData[i] = data[i]
-    };
-    return JSON.stringify(jsonData);
-  }
-
-  // given a JSON data, store it as objects in Rails
-  function saveHazardData(data){
-    var request = $.ajax({
-      url: '/hazards',
-      method: 'POST',
-      data: data,
-      dataType: 'JSON'
-    });
-
-    request.done(function(msg){
-      console.log("ajax success")
-    })
-
-    request.fail(function(msg){
-      console.log("ajax fail")
-    })
   }
 
 

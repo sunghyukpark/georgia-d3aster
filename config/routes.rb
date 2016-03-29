@@ -1,6 +1,15 @@
 Rails.application.routes.draw do
-  resources :hazards
+  resources :hazards do
+    collection { post :import }
+  end
+
   root 'hazards#index'
+
+  # displays tree map
+
+  get '/import/new' => 'hazards#import_new'
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

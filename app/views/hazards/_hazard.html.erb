@@ -1,0 +1,6 @@
+<div id="hazard-list-element-<%= @hazard.id %>">
+  <%= @hazard.name %>
+  <%= link_to 'Detail', hazard_path(@hazard) %>
+  <%= link_to 'Edit', edit_hazard_path(@hazard) %>
+  <%= link_to 'Remove', @hazard, method: :delete, data:{ confirm: 'Are you sure?'} %>
+</div>

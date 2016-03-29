@@ -1,7 +1,7 @@
 <div id="hazard-form">
-  <%= simple_form_for @hazard do |f| %>
+  <%= simple_form_for @hazard, remote: true do |f| %>
     <%= f.input :name %>
-    <%= f.input :type %>
+    <%= f.input :hazard_type_combo %>
     <%= f.input :postal_code %>
     <%= f.input :injuries %>
     <%= f.input :fatalities %>
@@ -9,8 +9,9 @@
     <%= f.input :crop_damage %>
     <%= f.input :hazard_id %>
     <%= f.input :fips_code %>
-    <%= f.input :begin_date %>
-    <%= f.input :end_date %>
+    <%= f.input :hazard_begin_date %>
+    <%= f.input :hazard_end_date %>
+    <%= f.input :remarks %>
     <%= f.button :submit %>
   <% end %>
 </div>

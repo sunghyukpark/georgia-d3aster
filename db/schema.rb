@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20160315001922) do
 
   create_table "hazards", force: :cascade do |t|
     t.string   "name"
-    t.string   "type"
+    t.string   "hazard_type_combo"
     t.string   "postal_code"
     t.integer  "injuries"
     t.integer  "fatalities"
@@ -23,10 +23,11 @@ ActiveRecord::Schema.define(version: 20160315001922) do
     t.integer  "crop_damage"
     t.integer  "hazard_id"
     t.integer  "fips_code"
-    t.datetime "begin_date"
-    t.datetime "end_date"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "hazard_begin_date"
+    t.datetime "hazard_end_date"
+    t.string   "remarks"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
 end

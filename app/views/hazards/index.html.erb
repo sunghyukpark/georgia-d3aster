@@ -1,2 +1,21 @@
 <h1>Disasters in Georgia</h1>
-<%= link_to 'Add New Hazard Information', new_hazard_path, id:'new-link', remote: true %>
+
+<h2>Tree Map</h2>
+<%= render 'map' %>
+
+
+<div><%= link_to 'Import Existing File', '/import/new' %></div>
+<div><%= link_to 'Add New Hazard Information', new_hazard_path, id:'new-link', remote: true %></div>
+
+<h2>Hazards</h2>
+<div id="hazard-list">
+  <% @hazards.each do |h| %>
+    <div id="hazard-list-element-<%= h.id %>">
+      <%= h.name %>
+      <%= link_to 'Detail', hazard_path(h) %>
+      <%= link_to 'Edit', edit_hazard_path(h) %>
+      <%= link_to 'Remove', h, method: :delete, data:{ confirm: 'Are you sure?'} %>
+    </div>
+  <% end %>
+</div>
+
