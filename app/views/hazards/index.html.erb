@@ -14,7 +14,7 @@
       <%= h.name %>
       <%= link_to 'Detail', hazard_path(h) %>
       <%= link_to 'Edit', edit_hazard_path(h) %>
-      <%= link_to 'Remove', h, method: :delete, data:{ confirm: 'Are you sure?'} %>
+      <%= link_to 'Remove', h, method: :delete, data:{ confirm: 'Are you sure?'}, remote: true%>
     </div>
   <% end %>
 </div>
