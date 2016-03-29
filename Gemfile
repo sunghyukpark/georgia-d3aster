@@ -14,6 +14,7 @@ gem 'simple_form'
 gem 'd3-rails'
 gem 'roo', '~> 2.3.2'
 gem 'iconv'
+gem 'bootstrap-sass', '~> 3.3.6'
 
 group :development, :test do
   gem 'byebug'

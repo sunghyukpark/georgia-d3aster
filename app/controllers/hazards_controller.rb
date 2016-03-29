@@ -1,5 +1,5 @@
 class HazardsController < ApplicationController
-  before_action :get_hazard, only: [:update]
+  before_action :set_hazard, only: [:show, :edit, :update, :destroy]
 
   # displays page for import
   def import_new
@@ -37,26 +37,28 @@ class HazardsController < ApplicationController
 
   # display hazard
   def show
-    @hazard = Hazard.find(params[:id])
   end
 
-  # display form for edit
   def edit
-    @hazard = Hazard.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
-  # edit hazard
   def update
-    if @hazard.update(hazard_params)
-      redirect_to @hazard
+    if @hazard.update_attributes(hazard_params)
+      respond_to do |format|
+        format.html { redirect_to @hazard }
+        format.js
+      end
     else
       render 'edit'
     end
   end
 
-  # destroy a specific hazard
   def destroy
-    @hazard = Hazard.destroy(params[:id])
+    @hazard.destroy
     respond_to do |format|
       format.html { redirect_to root_path }
       format.js
@@ -65,10 +67,10 @@ class HazardsController < ApplicationController
 
   private
     def hazard_params
-      params.require(:hazard).permit(:id, :name, :hazard_type_combo, :postal_code, :injuries, :fatalities, :property_damage, :crop_damage, :hazard_id, :fips_code, :hazard_begin_date, :hazard_end_date, :remarks)
+      params.require(:hazard).permit(:name, :hazard_type_combo, :postal_code, :injuries, :fatalities, :property_damage, :crop_damage, :hazard_id, :fips_code, :hazard_begin_date, :hazard_end_date, :remarks)
     end
 
-    def get_hazard
-      @hazard = Hazard.find(hazard_params)
+    def set_hazard
+      @hazard = Hazard.find(params[:id])
     end
 end
