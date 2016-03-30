@@ -38,4 +38,12 @@ class Hazard < ActiveRecord::Base
     attr << "hazard_id"
   end
 
+  def self.search(search)
+    if search
+      where('name LIKE ?', "%#{search}%")
+    else
+      all
+    end
+  end
+
 end

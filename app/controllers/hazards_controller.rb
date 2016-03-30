@@ -14,7 +14,7 @@ class HazardsController < ApplicationController
 
   # display list of hazards
   def index
-    @hazards = Hazard.order(sort_column + " " + sort_direction)
+    @hazards = Hazard.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 30, :page => params[:page] )
   end
 
   # display form to create new hazard
