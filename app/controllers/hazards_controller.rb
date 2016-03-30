@@ -1,5 +1,6 @@
 class HazardsController < ApplicationController
   before_action :set_hazard, only: [:show, :edit, :update, :destroy]
+  helper_method :sort_column, :sort_direction
 
   # displays page for import
   def import_new
@@ -13,7 +14,7 @@ class HazardsController < ApplicationController
 
   # display list of hazards
   def index
-    @hazards = Hazard.all
+    @hazards = Hazard.order(sort_column + " " + sort_direction)
   end
 
   # display form to create new hazard
@@ -37,6 +38,10 @@ class HazardsController < ApplicationController
 
   # display hazard
   def show
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def edit
@@ -72,5 +77,13 @@ class HazardsController < ApplicationController
 
     def set_hazard
       @hazard = Hazard.find(params[:id])
+    end
+
+    def sort_column
+      Hazard.column_names.include?(params[:sort]) ? params[:sort] : "name"
+    end
+
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
     end
 end

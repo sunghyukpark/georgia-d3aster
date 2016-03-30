@@ -16,3 +16,17 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+th .current {
+  padding-right: 40px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+
+th .asc {
+  background-image: url(/up.png);
+}
+
+th .desc {
+  background-image: url(/down.png);
+}

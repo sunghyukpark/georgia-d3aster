@@ -1,0 +1,15 @@
+<div id="hazard-detail-<%= @hazard.id %>">
+  <h1>Name: <%= @hazard.name %></h1>
+  <h3>Type: <%= @hazard.hazard_type_combo %></h3>
+  <h3>Injuries: <%= @hazard.injuries %></h3>
+  <h3>Fatalities: <%= @hazard.fatalities %></h3>
+  <h3>Property Damage: $<%= @hazard.property_damage %></h3>
+  <h3>Crop Damage: $<%= @hazard.crop_damage %></h3>
+  <h3>Begin Date: <%= @hazard.hazard_begin_date %></h3>
+  <h3>End Date: <%= @hazard.hazard_end_date %></h3>
+  <h3>Hazard ID: <%= @hazard.hazard_id %></h3>
+  <h3>FIPS code: <%= @hazard.fips_code %></h3>
+  <h3>Remarks: <%= @hazard.remarks %></h3>
+  <%= link_to 'Close', hazards_path %>
+</div>
+

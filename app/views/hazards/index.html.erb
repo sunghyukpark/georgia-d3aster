@@ -1,6 +1,6 @@
 <h1>Disasters in Georgia</h1>
 
-<h2>Tree Map</h2>
+<h2>Tree Map From Disasters.csv</h2>
 <%= render 'map' %>
 
 
@@ -10,14 +10,30 @@
 
 
 <h2>Hazards</h2>
-<div id="hazard-list">
-  <% @hazards.each do |h| %>
-    <div id="hazard-<%= h.id %>">
-      <%= h.name %>
-      <%= link_to 'Detail', hazard_path(h) %>
-      <%= link_to 'Edit', edit_hazard_path(h), remote: true %>
-      <%= link_to 'Remove', h, method: :delete, data:{ confirm: 'Are you sure?'}, remote: true%>
-    </div>
-  <% end %>
+<div id="index-hazard">
+  <ul>
+    <li><h3>Click 'Detail' for more information</h3></li>
+    <li><h3>Sort by clicking column name</h3></li>
+  </ul>
 </div>
+<table id="hazard-list">
+  <tr>
+    <th><%= sortable "name" %></th>
+    <th><%= sortable "hazard_type_combo", "Type" %></th>
+    <th><%= sortable "injuries"  %></th>
+    <th><%= sortable "fatalities" %></th>
+  </tr>
+
+  <% @hazards.each do |h| %>
+    <tr id="hazard-<%= h.id %>">
+      <td><%= h.name %></td>
+      <td><%= h.hazard_type_combo %></td>
+      <td><%= h.injuries %></td>
+      <td><%= h.fatalities %></td>
+      <td><%= link_to 'Detail', hazard_path(h), remote: true %></td>
+      <td><%= link_to 'Edit', edit_hazard_path(h), remote: true %></td>
+      <td><%= link_to 'Remove', h, method: :delete, data:{ confirm: 'Are you sure?'}, remote: true%></td>
+    </tr>
+  <% end %>
+</table>
 
