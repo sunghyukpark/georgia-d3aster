@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.2.1'
 
 gem 'rails', '4.2.5.1'
 gem 'pg'
@@ -16,6 +17,9 @@ gem 'roo', '~> 2.3.2'
 gem 'iconv'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'will_paginate', '~> 3.0.6'
+
+gem 'rails_12factor'
+
 
 
 group :development, :test do
