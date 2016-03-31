@@ -9,10 +9,30 @@ table {
   width: 50%;
 }
 
-
 #index-hazard {
   border-style: solid;
   border-width: 10px;
   float: right;
   width: 50%;
+}
+
+body {
+  background-color: #C8D168;
+}
+
+h1 {
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
+  background-color: #6BA099;
+}
+
+h4 {
+  text-align: center;
+}
+
+#search-form {
+  float: right;
 }
