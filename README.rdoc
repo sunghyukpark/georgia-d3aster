@@ -1,28 +1,11 @@
-== README
+== Georgia D3aster
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+About app
 
-Things you may want to cover:
+1) Displays Georgia hazards data with d3 tree map - considering the data size, it would be better to use bar charts with more aggregate analysis (average property damage for hurricane, average crop damage for tornado, ..etc).
 
-* Ruby version
+2) Create, Read (Detail), Update, Delete Hazard 
+- for Read, I've included detail box for further information, pagination for results, sorting by columns, search by hazard name
+- Update, Delete, Create done with AJAX
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+3) Heroku - https://georgia-d3asters.herokuapp.com/
